@@ -1,5 +1,5 @@
-// const ROOT_API_URL = process.env.REACT_APP_ROOT_PATH;
-const ROOT_API_URL = 'http://localhost:8080/api';
+const ROOT_API_URL = process.env.REACT_APP_ROOT_PATH;
+// const ROOT_API_URL = 'http://localhost:8080/api';
 /* global fetch */
 /* global localStorage */
 
