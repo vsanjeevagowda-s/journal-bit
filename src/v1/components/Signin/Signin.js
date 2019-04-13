@@ -39,8 +39,8 @@ class Signin extends Component {
   constructor(props){
     super(props);
     this.state = {
-      email: '',
-      password: ''
+      email: 'venkatesh.sv645@gmail.com',
+      password: 'Password@1'
     }
   }
   
