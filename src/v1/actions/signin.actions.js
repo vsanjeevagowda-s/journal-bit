@@ -1,7 +1,8 @@
 
 import { api } from './api-lib/api';
 import {
-  request
+  apiRequestPending,
+  apiRequestComplete
 } from '../actions/helper.actions';
 export const SIGNIN_REQUEST_SUCCESS = 'SIGNIN_REQUEST_SUCCESS';
 export const SIGNIN_REQUEST_FAILURE = 'SIGNIN_REQUEST_FAILURE';
@@ -24,14 +25,16 @@ export const storeEmailToken = () => ({
 })
 
 export const signin = body => (dispatch) => {
-  dispatch(request());
+  dispatch(apiRequestPending());
   return api.post('/signin', { ...body })
     .then(resp => {
       localStorage.setItem('token', resp.token);
       localStorage.setItem('email', resp.email);
+      dispatch(apiRequestComplete());
       return Promise.resolve(dispatch(signinRequestSuccess(resp.message)))
     })
     .catch(error => {
+      dispatch(apiRequestComplete());
       return Promise.reject(dispatch(signinRequestFailure(error.error)));
     })
 };

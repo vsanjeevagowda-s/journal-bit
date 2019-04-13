@@ -1,5 +1,10 @@
-export const API_REQUEST = 'API_REQUEST';
+export const API_REQUEST_PENDING = 'API_REQUEST_PENDING';
+export const API_REQUEST_COMPLETE = 'API_REQUEST_COMPLETE';
 
-export const request = () => ({
-  type: API_REQUEST,
+export const apiRequestPending = () => ({
+  type: API_REQUEST_PENDING,
+})
+
+export const apiRequestComplete = () => ({
+  type: API_REQUEST_COMPLETE,
 })
