@@ -7,6 +7,9 @@ import {
   Container,
   Alert
 } from 'reactstrap';
+import {
+  storeEmailToken
+} from './actions/signin.actions';
 
 const AlertWrapper = ({ message, error }) => {
   if (message) {
@@ -19,6 +22,12 @@ const AlertWrapper = ({ message, error }) => {
 }
 
 class App extends Component {
+
+  componentDidMount() {
+    const { storeEmailToken } = this.props;
+    storeEmailToken();
+  }
+
   render() {
     const { error, message } = this.props;
     return (
@@ -40,4 +49,8 @@ const mapStateToProps = state => {
   return { message, error };
 }
 
-export default connect(mapStateToProps, null)(App);
+const actions = {
+  storeEmailToken
+}
+
+export default connect(mapStateToProps, actions)(App);

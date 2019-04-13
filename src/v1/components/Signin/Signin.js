@@ -7,8 +7,11 @@ import {
   failureAlertHandler
 } from '../../actions/alert.actions';
 import {
-  connect
+  connect,
 } from 'react-redux';
+import {
+  withRouter
+} from 'react-router'
 import {
   Form,
   FormGroup,
@@ -36,8 +39,8 @@ class Signin extends Component {
   constructor(props){
     super(props);
     this.state = {
-      email: 'a@b.com',
-      password: 'password'
+      email: '',
+      password: ''
     }
   }
   
@@ -55,10 +58,11 @@ class Signin extends Component {
       failureAlertHandler 
     } = this.props;
     const { email, password } = this.state;
+    const { history } = this.props;
     signin({ email, password})
     .then(resp => {
-      debugger
-      successAlertHandler(resp);
+      successAlertHandler(resp.resp);
+      history.push('/records');
     })
     .catch(error => {
       failureAlertHandler(error.error);
@@ -102,5 +106,5 @@ const actions = {
   failureAlertHandler
 }
 
-export default connect(mapStateToProps, actions)(Signin);
+export default withRouter(connect(mapStateToProps, actions)(Signin));
 

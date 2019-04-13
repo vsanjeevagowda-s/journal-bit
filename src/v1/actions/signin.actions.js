@@ -19,13 +19,19 @@ const signinRequestFailure = error => (
     error
   });
 
+export const storeEmailToken = () => ({
+  type: TOKEN_EMAIL_TO_STORE
+})
+
 export const signin = body => (dispatch) => {
   dispatch(request());
   return api.post('/signin', { ...body })
     .then(resp => {
-      return Promise.resolve(dispatch(signinRequestSuccess(resp)))
+      localStorage.setItem('token', resp.token);
+      localStorage.setItem('email', resp.email);
+      return Promise.resolve(dispatch(signinRequestSuccess(resp.message)))
     })
     .catch(error => {
-      return Promise.reject(dispatch(signinRequestFailure(error)));
+      return Promise.reject(dispatch(signinRequestFailure(error.error)));
     })
 };

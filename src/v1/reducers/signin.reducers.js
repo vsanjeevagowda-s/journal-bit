@@ -10,8 +10,7 @@ import {
 const initialState = {
   pending: false,
   token: '',
-  companyName: '',
-  isSignInModalOpen: false,
+  email: '',
 }
 
 const signIn = (state = initialState, action) => {
@@ -25,7 +24,7 @@ const signIn = (state = initialState, action) => {
     return {
       ...state,
       token: localStorage.getItem('token'),
-      companyName: localStorage.getItem('companyName')
+      email: localStorage.getItem('email')
     }
     case SIGNIN_REQUEST_SUCCESS:
     return{

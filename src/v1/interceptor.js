@@ -7,8 +7,7 @@ const handleRejectedResponses = (response) => {
     case 400:
       return response.json()
         .then(data => {
-          debugger
-          return Promise.reject(data.error)});
+          return Promise.reject(data)});
     default:
       return response;
   }
