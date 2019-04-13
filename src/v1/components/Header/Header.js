@@ -7,7 +7,7 @@ import {
 class Header extends Component {
   render() {
     return (
-        <Row className='bg-secondary text-white py-2 '>
+        <Row className='bg-secondary text-white py-2 clearfix'>
           <Col sm={12}>
             <span className='h4'>Journal time</span>
           <span className='float-right'>logout</span>

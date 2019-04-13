@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../Header';
+import CreateRecord from './CreateRecord';
+import ListRecord from './ListRecord';
 import {
   Row,
   Col
@@ -10,12 +12,12 @@ class Record extends Component {
     return (
       <React.Fragment>
         <Header />
-        <Row>
-          <Col sm={4}>
-            Create record
+        <Row className='mt-2'>
+          <Col sm={6}>
+            <CreateRecord />
           </Col>
-          <Col sm={8}>
-          List record
+          <Col sm={6}>
+          <ListRecord />
           </Col>
         </Row>
         </React.Fragment>
